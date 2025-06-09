@@ -1,10 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page isELIgnored="false" %>
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Lista de Clientes</title>
+  <title>Lista de Contratos</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="bg-light">
@@ -21,10 +22,10 @@
           <a class="nav-link" aria-current="page" href="dashboard">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="cliente">Clientes</a>
+          <a class="nav-link" href="cliente">Clientes</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="vendedor">Vendedores</a>
+          <a class="nav-link active" href="vendedor">Vendedores</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="contratos">Contratos</a>
@@ -45,7 +46,7 @@
 </nav>
 
 <div class="container mt-5">
-  <h2 class="mb-4">Clientes Cadastrados</h2>
+  <h2 class="mb-4">Contratos</h2>
 
   <c:if test="${not empty msg}">
     <div class="container mt-3">
@@ -65,35 +66,39 @@
   </c:if>
 
   <c:if test="${not empty user}">
-    <c:if test="${not empty clientes}">
+
+    <c:if test="${not empty contratos}">
       <div class="table-responsive">
         <table class="table table-bordered table-hover bg-white">
           <thead class="table-primary">
           <tr>
-            <th>Razão Social</th>
-            <th>Documento</th>
-            <th>Contatos</th>
-            <th>Ações</th>
+            <th>Cliente</th>
+            <th>Início</th>
+            <th>Fim</th>
+            <th>Descrição</th>
+            <th>Valor</th>
+            <th>Vendedor</th>
+            <th>Ativo</th>
           </tr>
           </thead>
           <tbody>
-          <c:forEach var="cliente" items="${clientes}">
+          <c:forEach var="contrato" items="${contratos}">
             <tr>
-              <td>${cliente.nome}</td>
-              <td>${cliente.cpf}</td>
+              <td><c:out value="${contrato.nomeCliente}"/></td>
+              <td><fmt:formatDate value="${contrato.dataInicio}" pattern="dd/MM/yyyy" /></td>
+              <td><fmt:formatDate value="${contrato.dataFim}" pattern="dd/MM/yyyy" /></td>
+              <td><c:out value="${contrato.descricao}" /></td>
+              <td>R$<fmt:formatNumber value="${contrato.valor}" type="currency" currencySymbol=""/></td>
+              <td><c:out value="${contrato.nomeVendedor}" /></td>
               <td>
-                <c:forEach var="contato" items="${cliente.contatos}">
-                  <div class="mb-2">
-                    <strong>Nome:</strong> ${contato.nome}<br>
-                    <strong>Telefone:</strong> ${contato.telefone}<br>
-                    <strong>Email:</strong> ${contato.email}
-                  </div>
-<%--                  <hr>--%>
-                </c:forEach>
-              </td>
-              <td>
-                <a href="cliente?op=editar&info=${cliente.id}">Editar </a>
-                <a href="cliente?op=apagar&info=${cliente.id}">Apagar</a>
+                <c:choose>
+                  <c:when test="${contrato.ativo}">
+                    <span class="badge bg-success">Sim</span>
+                  </c:when>
+                  <c:otherwise>
+                    <span class="badge bg-secondary">Não</span>
+                  </c:otherwise>
+                </c:choose>
               </td>
             </tr>
           </c:forEach>
@@ -102,19 +107,18 @@
       </div>
     </c:if>
 
-    <c:if test="${empty clientes}">
+    <c:if test="${empty contratos}">
       <div class="alert alert-info" role="alert">
-        Nenhum cliente cadastrado ainda.
+        Nenhum contrato cadastrado ainda.
       </div>
     </c:if>
 
-  <a href="dashboard" class="btn btn-secondary mt-3">Voltar para o Dashboard</a>
-  <a href="cliente?op=cadastrar" class="btn btn-primary mt-3">Adicionar cliente</a>
-
+    <a href="dashboard" class="btn btn-secondary mt-3">Voltar para o Dashboard</a>
+    <a href="contratos?op=cadastrar" class="btn btn-primary mt-3">Registrar Contrato</a>
+  </c:if>
 
 </div>
-</c:if>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 </body>
 </html>

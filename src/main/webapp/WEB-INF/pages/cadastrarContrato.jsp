@@ -30,7 +30,7 @@
           <a class="nav-link" href="vendedor">Vendedores</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="contratos?op=cadastrar">Contratos</a>
+          <a class="nav-link active" href="contratos">Contratos</a>
         </li>
       </ul>
       <div class="dropdown ms-auto">

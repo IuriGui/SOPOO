@@ -27,7 +27,7 @@
           <a class="nav-link" href="vendedor">Vendedores</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="contratos?op=cadastrar">Contratos</a>
+          <a class="nav-link" href="contratos">Contratos</a>
         </li>
       </ul>
       <div class="dropdown ms-auto">

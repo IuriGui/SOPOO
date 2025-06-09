@@ -38,5 +38,9 @@ public class ContratoService {
         return vd.countContratos();
     }
 
+    public List<Contrato> listarContratos(){
+        return vd.listarContratos();
+    }
+
 
 }

@@ -28,7 +28,7 @@ public class ContratosServlet extends HttpServlet {
         RequestDispatcher rd;
 
         String opcao = req.getParameter("op");
-
+        System.out.printf("foi POST");
 
         if (!ValidateInput.isEmpty(opcao)) {
             if (opcao.equals("cadastrar")) {
@@ -67,6 +67,7 @@ public class ContratosServlet extends HttpServlet {
 
                     if (contratoCriado && vendedorAtualizado) {
                         req.getSession().setAttribute("msgSucesso", "Contrato criado com sucesso!");
+                        System.out.println("Contrato criado com sucesso!");
                         resp.sendRedirect("contratos");
                         return;
                     } else {
@@ -75,6 +76,7 @@ public class ContratosServlet extends HttpServlet {
 
 
                 } catch (Exception e) {
+                    System.out.println("Erro ao criar contrato: " + e.getMessage());
                     req.setAttribute("msg", "Erro ao criar contrato: " + e.getMessage());
                     resp.sendRedirect("contratos");
                 }
@@ -87,30 +89,30 @@ public class ContratosServlet extends HttpServlet {
         RequestDispatcher rd;
         String opcao = req.getParameter("op");
 
-        if (opcao != null && !opcao.isEmpty()) {
-            if (opcao.equals("cadastrar")) {
-                List<Cliente> clientes = contratoService.listarClientes();
-                List<Vendedor> vendedores = contratoService.listarVendedores();
-                req.setAttribute("vendedores", vendedores);
-                req.setAttribute("clientela", clientes);
-                rd = req.getRequestDispatcher("/WEB-INF/pages/cadastrarContrato.jsp");
-                rd.forward(req, resp);
-                return;
-            } else if (opcao.equals("editar")) {
-                req.setAttribute("op", "editar");
-                req.setAttribute("info", Integer.parseInt(req.getParameter("info")));
-                rd = req.getRequestDispatcher("/WEB-INF/pages/contrato");
-                rd.forward(req, resp);
-                return;
-            } else {
-                List<Vendedor> vendedores = contratoService.listarVendedores();
-                //List<Cliente> clientes = contratoService.listarClientes();
 
-                req.setAttribute("vendedores", vendedores);
-                rd = req.getRequestDispatcher("/WEB-INF/pages/vendedores.jsp");
-                rd.forward(req, resp);
-            }
+        switch (!ValidateInput.isEmpty(opcao) ? opcao : "") {
+            case "cadastrar":
+                carregarClientesEVendedores(req);
+                rd = req.getRequestDispatcher("/WEB-INF/pages/cadastrarContrato.jsp");
+                break;
+            default:
+                req.setAttribute("contratos", contratoService.listarContratos());
+                rd = req.getRequestDispatcher("/WEB-INF/pages/contratos.jsp");
+
         }
+        rd.forward(req, resp);
+
 
     }
+
+
+    private void carregarClientesEVendedores(HttpServletRequest req) {
+        List<Cliente> clientes = contratoService.listarClientes();
+        List<Vendedor> vendedores = contratoService.listarVendedores();
+        req.setAttribute("clientela", clientes);
+        req.setAttribute("vendedores", vendedores);
+    }
+
 }
+
+

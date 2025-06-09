@@ -1,6 +1,7 @@
 package br.csi.dao;
 
 import br.csi.model.Contrato;
+import br.csi.model.Vendedor;
 
 
 import java.math.BigDecimal;
@@ -8,6 +9,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ContratoDao {
 
@@ -70,6 +73,48 @@ public class ContratoDao {
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
+
+    }
+
+    public List<Contrato> listarContratos(){
+        String sql = "SELECT " +
+                "teste.nome AS nome_cliente, " +
+                "v.nome AS nome_vendedor, " +
+                "c.data_inicial, " +
+                "c.data_final, " +
+                "c.descricao, " +
+                "c.valor, " +
+                "c.ativo " + // <- espaço no final
+                "FROM contrato AS c " +  // <- espaço no final
+                "JOIN vendedor AS v ON v.id = c.id_vendedor " +  // <- espaço no final
+                "JOIN cliente AS teste ON teste.id = c.id_cliente";
+
+
+        try(Connection conn = ConectarBancoDeDados.conectarPostgres()){
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            List<Contrato> lista = new ArrayList<Contrato>();
+
+            while(rs.next()){
+                Contrato c = new Contrato(
+                        rs.getDate("data_inicial"), rs.getDate("data_final"),
+                        rs.getString("descricao"), rs.getBigDecimal("valor"),
+                        rs.getString("nome_cliente"), rs.getString("nome_vendedor"),
+                        rs.getBoolean("ativo")
+                );
+
+                if(lista.add(c)){
+                    System.out.printf("Adicionado com sucesso!");
+                }
+            }
+
+            return lista;
+
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
 
     }
 
