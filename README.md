@@ -7,13 +7,13 @@ No momento o sistema de permissão por usuário não funciona, sendo todos os us
 Cada um tendo suas próprias views. Talvez integrar com os emails dos usuários.
 
 ## ✅ URGENTE
-- [-]  Criar sistema de permissões por tipo de usuário.
+- [ ]  Criar sistema de permissões por tipo de usuário.
 - [X] Terminar o cadastro de contrato. Se precisar, acabar com a ideia.
 - [X] Realizar o calculo de comissão após registrar o contrato.
 - [X] Exibir algo na primeira página (ranking de cliente, gráfico do mês).
 - [X] Montar consulta que retorne as vendas do mês.
-- [-] Alerta de contratos que vão vencer nos próximos 30 dias.
-- [-] Adicionar gráfico de vendas por mês com Chart.js ou Google Charts.
+- [ ] Alerta de contratos que vão vencer nos próximos 30 dias.
+- [ ] Adicionar gráfico de vendas por mês com Chart.js ou Google Charts.
 - [X] 🏆 Exibir posição no ranking de gastos (ex: 1°, 2°, 3°).
 - [x] Criar dashboard com métricas (total vendido, contratos ativos, etc).
 
@@ -43,14 +43,14 @@ Cada um tendo suas próprias views. Talvez integrar com os emails dos usuários.
 - [ ] Registro de contratos.
 - [ ] DAOs de vendedores, contratos.
 - [ ] Remodelar as classes que herdam User.
-- [-] Adicionar comentários internos em contratos.
-- [-] Sugerir valores baseados no histórico de contratos do cliente.
+- [ ] Adicionar comentários internos em contratos.
+- [ ] Sugerir valores baseados no histórico de contratos do cliente.
 
 ---
 
 ## 💡 IDEIAS FUTURAS / BONUS
 
-- []  Relatório mensal automático por e-mail (com JavaMail).
-- [-]  Criar portal do cliente para consultar seus contratos.
-- [-]  Importar clientes de arquivo CSV.
-- [-]  Implementar recomendação simples com base nos contratos anteriores.
+- [ ]  Relatório mensal automático por e-mail (com JavaMail).
+- [ ]  Criar portal do cliente para consultar seus contratos.
+- [ ]  Importar clientes de arquivo CSV.
+- [ ]  Implementar recomendação simples com base nos contratos anteriores.
