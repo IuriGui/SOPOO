@@ -2,6 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@page isELIgnored="false" %>
 <html>
+<meta charset="UTF-8">
 <head>
     <title>Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -17,32 +18,34 @@
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link active" c aria-current="page" href="dashboard">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="cliente">Clientes</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " href="vendedor">Vendedores</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="contratos">Contratos</a>
-                </li>
-            </ul>
-            <div class="dropdown ms-auto">
-                <button class="btn btn-secondary dropdown-toggle" type="button"
-                        id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                    <c:out value="${user}" default="Login"/>
-                </button>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
-                    <li><a class="dropdown-item" href="#">Perfil</a></li>
-                    <li><a class="dropdown-item" href="logout">Sair</a></li>
+        <c:if test="${not empty msg}">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" c aria-current="page" href="dashboard">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cliente">Clientes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="vendedor">Vendedores</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contratos">Contratos</a>
+                    </li>
                 </ul>
+                <div class="dropdown ms-auto">
+                    <button class="btn btn-secondary dropdown-toggle" type="button"
+                            id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                        <c:out value="${user}" default="Login"/>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                        <li><a class="dropdown-item" href="#">Perfil</a></li>
+                        <li><a class="dropdown-item" href="logout">Sair</a></li>
+                    </ul>
+                </div>
             </div>
-        </div>
+        </c:if>
     </div>
 </nav>
 
