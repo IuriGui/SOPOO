@@ -7,15 +7,20 @@ No momento o sistema de permissão por usuário não funciona, sendo todos os us
 Cada um tendo suas próprias views. Talvez integrar com os emails dos usuários.
 
 ## ✅ URGENTE
-- [ ]  Criar sistema de permissões por tipo de usuário.
+- [ ] Criar sistema de permissões por tipo de usuário.
 - [X] Terminar o cadastro de contrato. Se precisar, acabar com a ideia.
 - [X] Realizar o calculo de comissão após registrar o contrato.
 - [X] Exibir algo na primeira página (ranking de cliente, gráfico do mês).
 - [X] Montar consulta que retorne as vendas do mês.
 - [ ] Alerta de contratos que vão vencer nos próximos 30 dias.
 - [ ] Adicionar gráfico de vendas por mês com Chart.js ou Google Charts.
-- [X] 🏆 Exibir posição no ranking de gastos (ex: 1°, 2°, 3°).
+- [X] Exibir posição no ranking de gastos (ex: 1°, 2°, 3°).
 - [x] Criar dashboard com métricas (total vendido, contratos ativos, etc).
+- [ ] Criar versão detalhada das métricas.
+- [ ] Projetar como os contratos serão relacionados aos programas/blocos comerciais
+- [ ] Procurar saber se é possível (e se é uma boa ideia) colocar preços diferentes baseados no horário.
+- [ ] Notificar os cliente quando for o dia do pagamento.
+- [ ]
 
 ---
 
