@@ -10,10 +10,7 @@ FROM quay.io/wildfly/wildfly:latest
 
 COPY --from=builder /app/target/*.war /opt/jboss/wildfly/standalone/deployments/app.war
 
-COPY wait-for-it.sh /wait-for-it.sh
-
 EXPOSE 8080
 
-CMD ["bash", "/wait-for-it.sh", "postgres", "5432", "--", "/opt/jboss/wildfly/bin/standalone.sh", "-b", "0.0.0.0"]
-
+ENTRYPOINT ["/opt/jboss/wildfly/bin/standalone.sh", "-b", "0.0.0.0"]
 
