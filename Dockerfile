@@ -1,6 +1,6 @@
 FROM maven:3.9.6-eclipse-temurin-21 AS builder
 
-RUN git clone https://github.com/IuriGui/Sistema-de-Gerenciamento-de-Radio.git /app
+RUN git clone https://github.com/IuriGui/SOPOO /app
 
 WORKDIR /app
 
