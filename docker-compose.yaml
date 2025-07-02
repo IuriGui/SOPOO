@@ -1,14 +1,4 @@
-version: '3.8'
-
 services:
-  app:
-    build: .
-    ports:
-      - "8080:8080"
-    depends_on:
-      - postgres
-      - ./logs:/opt/jboss/wildfly/standalone/log
-
   postgres:
     image: postgres
     environment:
@@ -19,3 +9,12 @@ services:
       - ./initSql:/docker-entrypoint-initdb.d
     ports:
       - "5432:5432"
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    volumes:
+      - ./logs:/opt/jboss/wildfly/standalone/log
+
