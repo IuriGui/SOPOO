@@ -2,8 +2,6 @@ package br.csi.dao;
 
 import br.csi.model.Cliente;
 import br.csi.model.Contato;
-;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;

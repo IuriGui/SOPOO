@@ -18,7 +18,6 @@
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <c:if test="${not empty msg}">
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
@@ -45,7 +44,6 @@
                     </ul>
                 </div>
             </div>
-        </c:if>
     </div>
 </nav>
 
