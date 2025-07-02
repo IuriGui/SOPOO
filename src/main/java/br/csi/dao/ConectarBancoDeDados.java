@@ -10,7 +10,7 @@ public class ConectarBancoDeDados{
         Class.forName("org.postgresql.Driver");
 
 
-        String url = "jdbc:postgresql://localhost:5432/radio";
+        String url = "jdbc:postgresql://postgres:5432/radio";
         String user = "postgres";
         String senha = "1234";
 
